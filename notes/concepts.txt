@@ -1,0 +1,11 @@
+
+++++++++++++++++++++++++++++++++
+Image Layers
+++++++++++++++++++++++++++++++++
+    1. Each instruction in a Dockerfile roughly translates to an image layer.
+    2. Each Instructions in the dockerfile is cached.
+    3. When you run a build, the builder attempts to reuse layers from earlier builds
+    4. When no changes is done and the image is rebuild --> build it from the chached image Layers
+    5. If change occurs in particular layer.. the subsequent bellow layers are re-run
+    
+    
