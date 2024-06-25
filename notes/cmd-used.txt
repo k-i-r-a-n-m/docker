@@ -63,3 +63,11 @@ Cmd's used
         
 15. docker build 
     --> --tag <name:tag> = naming/tagging a image
+
+
+16. docker tag <oldImageName:tag> <newImageName:tag>
+    --> used to rename/re-tag and existing image
+
+
+17. docker login
+18. docker logout
