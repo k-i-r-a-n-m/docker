@@ -1,0 +1,16 @@
++++++++++++++++++++++++++++
+DockerFile Instructions
++++++++++++++++++++++++++++
+1.RUN - cmd's to run when building the image
+
+2.CMD - cmd's to run when the container is being run
+
+3.EXPOSE - <port/protocol(TCP)>  **Optional
+
+    The EXPOSE instruction doesn't actually publish the port.
+    It functions as a type of "documentation" between the person who builds the image and the person who runs the container, 
+    about which ports are intended to be published.
+
+    eg. 
+        --> EXPOSE 80/udp
+        --> docker run -p 80:80/tcp -p 80:80/udp ...

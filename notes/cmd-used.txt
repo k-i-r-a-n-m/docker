@@ -3,33 +3,63 @@
 =======================
 Cmd's used
 =======================
-4. docker run -it <image>  
+4. docker run <image>   
     --> run's the container with specified image
+    --> "docker  run [OPTIONS] IMAGE [COMMAND] [ARG...]" (order matters)**
     --> -it (provides interactive terminal) -i (interact with STDIN) -t (Opens up the pseudo-TTY - ie.terminal)
+    --> -p <local_port:container_port> ..n(port mapping) <image_to_run> = Publish the containers port
+             --> eg .docker run -p 4000:80 -p 5555:80 13a87e2451366fa7dcfa
+    -->   -d = to run container in detached mode
+    --> --rm = Automatically remove the container when stoped
+    --> --name = naming a container
 
-5. docker run -p <local_port:container_port> ..n(port mapping) <image_to_run>
-    --> eg .docker run -p 4000:80 -p 5555:80 13a87e2451366fa7dcfa
 
-6. docker start <container_name> 
+5. docker start <container_name> 
     --> restarts a container
+    --> -a = to run container in attached mode
+    --> -i = restarts the container in interactive mode (listen for STDIN)
 
 
+6. docker attach <container_name>
+    --> attach to a detached container
 
-+++++++++++++++++++++++++++
-DockerFile Instructions
-+++++++++++++++++++++++++++
-1.RUN - cmd's to run when building the image
 
-2.CMD - cmd's to run when the container is being run
+7. docker logs <container_name>
+    --> gets "all" the logs (includes previous logs also)
+    --> -f, --follow  = Follow log output (used to attach to the container, when the container is running in detached mode)
 
-3.EXPOSE - <port/protocol(TCP)>  **Optional
 
-    The EXPOSE instruction doesn't actually publish the port.
-    It functions as a type of "documentation" between the person who builds the image and the person who runs the container, 
-    about which ports are intended to be published.
+8. docker rm <container_name_1 container_name_2 ...container_name_N>
+    --> remove the container
 
-    eg. 
-        --> EXPOSE 80/udp
-        --> docker run -p 80:80/tcp -p 80:80/udp ...
+
+9. docker rmi <image_ID ...n>
+    --> remove the image 
+    --> before removing all the containers(running/stoped) must be removed
+
+
+10. docker images 
+    --> list all the images
+
+
+11. docker image prune
+    --> Remove all dangling images
+    --> -a = also remove all images not referenced by any container.
+
+
+12. docker container prune
+    --> Removes all stopped containers.
+
+
+13. docker inspect <image/container[name/id]>
+    --> inspect the docker object for images & containers
+
+
+14. docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH 
+    docker cp [OPTIONS] SRC_PATH CONTAINER:DEST_PATH
+
+    --> Coppy files to and from containers and local_machine
 
         
+15. docker build 
+    --> --tag <name:tag> = naming/tagging a image

@@ -9,3 +9,10 @@ Image Layers
     5. If change occurs in particular layer.. the subsequent bellow layers are re-run
     
     
+============================================
+Docker cmd/container modes -- run vs start
+============================================
+
+Default:
+    run   --> cmd in attached mode (Foreground)
+    start --> cmd in detached mode (Background)
