@@ -3,6 +3,15 @@
 =======================
 Cmd's used
 =======================
+
+1.docker build <path_to_dockerfile>
+ --> --tag <name:tag> = naming/tagging a image
+
+2.docker ps  -> get all the "running" containers (ps-process status)
+    -a,-all --> get all containers (both running & stoped)
+
+3.docker stop <docker-container-name>
+
 4. docker run <image>   
     --> run's the container with specified image
     --> "docker  run [OPTIONS] IMAGE [COMMAND] [ARG...]" (order matters)**
@@ -62,8 +71,7 @@ Cmd's used
 
         
 15. docker build 
-    --> --tag <name:tag> = naming/tagging a image
-
+   
 
 16. docker tag <oldImageName:tag> <newImageName:tag>
     --> used to rename/re-tag and existing image
@@ -71,3 +79,6 @@ Cmd's used
 
 17. docker login
 18. docker logout
+
+19. docker push <remote_repo/image_name:tag> (eg. k1r4nm/appImage:v1)
+20. docker pull <remote_repo/image_name:tag>
