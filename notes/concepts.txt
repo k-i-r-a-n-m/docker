@@ -16,3 +16,20 @@ Docker cmd/container modes -- run vs start
 Default:
     run   --> cmd in attached mode (Foreground)
     start --> cmd in detached mode (Background)
+
+
+VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+Docker Volumes  - Anonymous vs named
+VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+    ANONYMOUS:
+
+        1. VOLUME [path] - in dockerfile creates anonymous volumes
+        2. They are deleted when the container is run with --rm flag
+        3. every when a container is run newly it create new anonymous volumes(not useful)
+    
+    NAMED:
+
+        1. -v <volume_name:path_inside_container> is usefull to create Named Volumes
+        2. These are not deleted when the container is removed even with --rm
+        

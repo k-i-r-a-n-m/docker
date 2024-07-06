@@ -17,10 +17,12 @@ Cmd's used
     --> "docker  run [OPTIONS] IMAGE [COMMAND] [ARG...]" (order matters)**
     --> -it (provides interactive terminal) -i (interact with STDIN) -t (Opens up the pseudo-TTY - ie.terminal)
     --> -p <local_port:container_port> ..n(port mapping) <image_to_run> = Publish the containers port
-             --> eg .docker run -p 4000:80 -p 5555:80 13a87e2451366fa7dcfa
+             --> (eg) .docker run -p 4000:80 -p 5555:80 13a87e2451366fa7dcfa
     -->   -d = to run container in detached mode
     --> --rm = Automatically remove the container when stoped
     --> --name = naming a container
+    --> -v = create named volumes <volume_name:path_inside_container>
+            --> (eg) -v feedback:/app/feedback
 
 
 5. docker start <container_name> 
@@ -69,16 +71,20 @@ Cmd's used
 
     --> Coppy files to and from containers and local_machine
 
-        
-15. docker build 
    
 
-16. docker tag <oldImageName:tag> <newImageName:tag>
-    --> used to rename/re-tag and existing image
+15. docker tag <oldImageName:tag> <newImageName:tag>
+    --> used to rename/re-tag an existing image
 
 
-17. docker login
-18. docker logout
+16. docker login
+17. docker logout
 
-19. docker push <remote_repo/image_name:tag> (eg. k1r4nm/appImage:v1)
-20. docker pull <remote_repo/image_name:tag>
+18. docker push <remote_repo/image_name:tag> (eg. k1r4nm/appImage:v1)
+19. docker pull <remote_repo/image_name:tag>
+
+
+20. docker volume 
+    --> ls    = list the volumes both anonymous/named
+    --> prune = remove un-used anonymous volumes
+    --> rm    = remove 1 or more volume

@@ -14,3 +14,9 @@ DockerFile Instructions
     eg. 
         --> EXPOSE 80/udp
         --> docker run -p 80:80/tcp -p 80:80/udp ...
+
+4. VOLUME - "path1 path2 ...n"/[paths...n] 
+
+    Creates Anonymous volumes when the container is run
+    eg.
+        --> VOLUME ["/app/feedback"]
