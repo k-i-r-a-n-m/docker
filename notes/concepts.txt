@@ -22,6 +22,8 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 Docker Volumes  - Anonymous vs named
 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
+    FileSystem is Managed by Docker inside the host.
+
     ANONYMOUS:
 
         1. VOLUME [path] - in dockerfile creates anonymous volumes
@@ -32,4 +34,41 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
         1. -v <volume_name:path_inside_container> is usefull to create Named Volumes
         2. These are not deleted when the container is removed even with --rm
-        
+
+
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+DOCKER  Volumes - BIND MOUNT
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
+    1. A file or directory on the host machine is mounted into a container
+    2. Using -v with Absolute path (-v 'abs_path:path_inside_container')
+    3. As a user we have the control over the host's filesystem which is being mounted.
+
+
+
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+Networks
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+
+NOTE : Unlike volumes, Networks need to be created before using it!
+
+How docker resolves the ip:
+- Docker does NOT REPLACE the source code.
+- It detects OUTGOING REQUESTS and resolves the ip for such requests
+
+1. container <--> WWW        --> No config required, works by default
+2. container <--> Localhost  --> "host.docker.internal"
+3. container <--> container  --> use container_name  has REFERENCE (network containers)
+                                 (or) conatiner_ipAddress (in app code without using docker Networks)
+
+            NETWORK
+|-----------------------------------|
+|node app |    mongo db             |
+|---------|-------------------------|   
+    |                   |                      
+    V                   V
+container 1        container 2
+
+eg. 
+2.http://host.docker.internal:3000/favourites --> instead of http://localhost:3000...
+3.mongodb://<mongoContainer_name>/..paths

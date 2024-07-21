@@ -88,3 +88,13 @@ Cmd's used
     --> ls    = list the volumes both anonymous/named
     --> prune = remove un-used anonymous volumes
     --> rm    = remove 1 or more volume
+
+
+
+
+
+
+shortcut-  for getting absolute path
+=====================================
+macOS / Linux: -v $(pwd):/app
+Windows: -v "%cd%":/app
