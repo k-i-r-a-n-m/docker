@@ -21,8 +21,10 @@ Cmd's used
     -->   -d = to run container in detached mode
     --> --rm = Automatically remove the container when stoped
     --> --name = naming a container
-    --> -v = create named volumes <volume_name:path_inside_container>
+    --> -v = create NAMED/ANONYMUS volumes <volume_name:path_inside_container>
             --> (eg) -v feedback:/app/feedback
+            --> READ-ONLY-VOLUME = (eg) feedback:/app/feedback:ro
+                                                          
 
 
 5. docker start <container_name> 

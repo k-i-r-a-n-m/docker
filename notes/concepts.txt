@@ -9,6 +9,7 @@ Image Layers
     5. If change occurs in particular layer.. the subsequent bellow layers are re-run
     
     
+    
 ============================================
 Docker cmd/container modes -- run vs start
 ============================================
@@ -16,6 +17,7 @@ Docker cmd/container modes -- run vs start
 Default:
     run   --> cmd in attached mode (Foreground)
     start --> cmd in detached mode (Background)
+
 
 
 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
@@ -36,6 +38,7 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
         2. These are not deleted when the container is removed even with --rm
 
 
+
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 DOCKER  Volumes - BIND MOUNT
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
@@ -43,6 +46,25 @@ BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
     1. A file or directory on the host machine is mounted into a container
     2. Using -v with Absolute path (-v 'abs_path:path_inside_container')
     3. As a user we have the control over the host's filesystem which is being mounted.
+
+
+
+RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+DOCKER Volumes - Read-only
+RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+
+    usage : <named_volume1:path_inside_container:ro> (read-only)
+
+    -- You can simultaneously mount a single volume as read-write for some containers and as read-only for others
+
+
+
+DIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDDIDIDIDIDIDIDID
+Docker Ignore file  (.dockerignore)
+DIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDDIDIDIDIDIDIDID
+
+    --Similar to .gitignore.
+    --while COPY, we can ignore some files/folder being copied into images.
 
 
 
