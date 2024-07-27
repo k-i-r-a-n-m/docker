@@ -24,9 +24,20 @@ Cmd's used
     --> -v = create NAMED/ANONYMUS volumes <volume_name:path_inside_container>
             --> (eg) -v feedback:/app/feedback
             --> READ-ONLY-VOLUME = (eg) feedback:/app/feedback:ro
-                                                          
+
+    --> --env, -e <env.variable=VALUE>  = Creates a Environment variable at "runtime"
+            --> (eg) PORT=8000 
+
+    --> --env-file <env_file_path>      = Creates a Environment Variables using (.env) file
+            --> (eg) --env-file ./.env  (at root)
+
+    --> --build-arg <argument_variable=VALUE> = Creates a Argument variable at "Buildtime"
+            --> (eg) DEFAULT_PORT=8000 
+
+    --> --network <NETWORK_NAME> = Connect a container to a network
 
 
+                                             
 5. docker start <container_name> 
     --> restarts a container
     --> -a = to run container in attached mode
@@ -91,12 +102,18 @@ Cmd's used
     --> prune = remove un-used anonymous volumes
     --> rm    = remove 1 or more volume
 
-
-
+21. docker network 
+    --> connect     add a running container to a network 
+    --> create      Create a network
+    --> disconnect  Disconnect a container from a network
+    --> inspect     Display detailed information on one or more networks
+    --> ls          List networks
+    --> prune       Remove all unused networks
+    --> rm          Remove one or more networks
 
 
 
 shortcut-  for getting absolute path
 =====================================
 macOS / Linux: -v $(pwd):/app
-Windows: -v "%cd%":/app
+Windows: -v "%cd%":/app 

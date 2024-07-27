@@ -20,3 +20,14 @@ DockerFile Instructions
     Creates Anonymous volumes when the container is run
     eg.
         --> VOLUME ["/app/feedback"]
+
+5. ENV <variable_name> <value>
+6. ARG <variable_name> <value>
+
+    Note: -don't use at global level since, it's a layer affects bellow layers.
+          -Keep it close to where the variable is being used.
+
+    eg.
+        --> ARG DEFAULT_PORT=3000
+        --> ENV PORT $DEFAULT_PORT
+        --> EXPOSE $PORT 

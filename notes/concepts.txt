@@ -94,3 +94,17 @@ container 1        container 2
 eg. 
 2.http://host.docker.internal:3000/favourites --> instead of http://localhost:3000...
 3.mongodb://<mongoContainer_name>/..paths
+
+
+DDDDDDDDDDDDDDDDDDDDDD
+NETWORK - "Drivers"
+DDDDDDDDDDDDDDDDDDDDDD
+
+DEFAULT : bridge - i.e. Containers can find each other by name if they are in the same Network
+
+1. host     -  For standalone containers, isolation between container and host system is removed (i.e. they share localhost as a network)
+2. overlay  - Multiple Docker daemons (i.e. Docker running on different machines) are able to connect with each other. Only works in "Swarm" mode which is a dated / almost deprecated way of connecting multiple containers
+3. macvlan  - You can set a custom MAC address to a container - this address can then be used for communication with that container
+4. none     - All networking is disabled.
+5. Third-party plugins
+
