@@ -1,0 +1,7 @@
+docker run --name server --rm -v "D:\docker\multi-contianer-app\backend:/app" -v ./app/node_modules -p 80:80 --network multiContainerNetwork backend
+
+
+docker run --name mongodb --rm -d -v mongodbData:/data/db --network multiContainerNetwork mongo
+
+
+docker run --name react --rm -v "D:\docker\multi-contianer-app\frontend:/app" -v ./app/node_modules -p 3000:3000 -it frontend
