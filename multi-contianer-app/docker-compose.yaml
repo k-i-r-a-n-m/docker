@@ -1,0 +1,62 @@
+
+version: '1.27.0'
+services:
+
+
+  # docker run --name mongodb --rm -d -v mongodbData:/data/db --network multiContainerNetwork mongo
+  mongodb:
+    image: mongo
+    volumes:
+      - mongodbData:/data/db
+    container_name: mongodb  #forces the container name instead of generating a one by docker-compose
+    # environment:
+      # 3 - ways of declaring (mapping) key values 
+      # MONGO_INITDB_ROOT_USERNAME: max       // creates a yaml object (key-value) (:) used
+      # MONGO_INITDB_ROOT_PASSWORD: secret
+      # - MONGO_INITDB_ROOT_USERNAME=value      ## it's considered as a single value when (-) used 
+    # env_file:
+      # - ./env/mongo
+    # networks:
+    #   - multiContainerNetwork     ## docker-compose created a "default network"
+
+
+
+  
+  # docker run --name server --rm -d -v logs:/app/logs -v "D:\docker\multi-contianer-app\backend:/app" -v ./app/node_modules -p 80:80 --network multiContainerNetwork backend
+  backend:
+    build: ./backend    # shorter version
+
+    # build:
+    #   context: buildContext  # setting the context (relevant file location) to build an image
+    #   dockerfile: dockerfile # name of the dockerfile inside the context
+    #   args:
+    #     - name=value
+
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app             #bind mount
+      - /app/node_modules        #anonymous volume
+
+    depends_on:
+      - mongodb                   #service name in which it is depended on
+
+  # docker run --name react --rm -v "D:\docker\multi-contianer-app\frontend:/app" -v ./app/node_modules -p 3000:3000 -it frontend
+  frondend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+
+    #-it 
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+volumes:
+  mongodbData:   # registering the named volumes ,(not for anonymous, bind mount volumes)
+  logs:

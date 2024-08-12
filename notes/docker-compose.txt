@@ -1,0 +1,52 @@
+
+                    CONCEPT
+==================================================
+
+One config file 
+        + 
+orchestration commands (builds,start,stop)...
+
+
+what docker-compose is NOT:
+-----------------------------
+1. managing multi-contianer in diffrent host(machines)
+2. doesn't replaces the image or container
+3. doesn't replaces DOCKERFILE for custom images
+
+
+
+
+((((((((((((HOW to use:))))))))))))
+
+--> docker-compose.yaml / compose.yaml
+
+1. docker-compose up
+    ''' default runs in attached mode '''
+
+    --> -d = run in detached mode
+    --> --build = force the build step instead of using existing build images
+
+2. docker-compose down 
+     ''' Removes 
+            -default network
+            -container being created
+            -but doesn't removes the volume
+     '''
+
+    --> -v - removes the volume
+
+3. docker-compose build 
+    - just build the custom dockerfiles without triggering run containers
+
+
+
+
+XXXXXXXXXX
+   NOTE
+XXXXXXXXXX
+1. No need to create Network for the services involved. (Created by docker-compose by default)
+2. Service names can be used inside the code even though docker-compose creates a different container names 
+   --> (service:mongodb) 
+   --> ie. "mongodb://mongodb:27017/course-goals"
+
+3. docker-compose won't rebuild unless any changes occurs in the docker file . ("build" instruction in docker-compose under service)
