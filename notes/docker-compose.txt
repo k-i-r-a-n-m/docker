@@ -30,7 +30,7 @@ what docker-compose is NOT:
      ''' Removes 
             -default network
             -container being created
-            -but doesn't removes the volume
+            -but doesn't removes the volume**
      '''
 
     --> -v - removes the volume
@@ -38,6 +38,8 @@ what docker-compose is NOT:
 3. docker-compose build 
     - just build the custom dockerfiles without triggering run containers
 
+4. docker-compose run <service_name>
+    - Run's contianer based on  specific service name in docker-compose file 
 
 
 

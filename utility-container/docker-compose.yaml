@@ -1,5 +1,6 @@
 services:
   node_utility:
+    container_name: "node_utility"
     build: ./
     volumes:
       - ./:/app

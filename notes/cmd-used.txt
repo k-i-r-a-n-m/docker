@@ -12,7 +12,7 @@ Cmd's used
 
 3.docker stop <docker-container-name>
 
-4. docker run <image>   
+4. docker run <image> <cmds_overriding_default_cmd_of_image's>
     --> run's the container with specified image
     --> "docker  run [OPTIONS] IMAGE [COMMAND] [ARG...]" (order matters)**
     --> -it (provides interactive terminal) -i (interact with STDIN) -t (Opens up the pseudo-TTY - ie.terminal)
@@ -35,7 +35,7 @@ Cmd's used
             --> (eg) DEFAULT_PORT=8000 
 
     --> --network <NETWORK_NAME> = Connect a container to a network
-
+    
 
                                              
 5. docker start <container_name> 
@@ -110,6 +110,10 @@ Cmd's used
     --> ls          List networks
     --> prune       Remove all unused networks
     --> rm          Remove one or more networks
+
+
+22. docker exec <running_continer_name> <cmd_to_run_inside_container>
+    --> -it = run command in interactive mode
 
 
 
