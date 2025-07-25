@@ -1,0 +1,23 @@
+ 
+ 
+ docker run --rm  -d -p 5000:80 --name fb1 \
+ -v app/feedback \
+ feedback
+
+
+  docker run --rm  -d -p 5000:80 --name fb2 \
+ -v /app/feedback \    ===> added "/" at front
+ feedback
+
+
+ After inspection of fb2:
+ - the destination is a display artifact shows("c:/....)
+ - but the container running inside the linnux environment will convert it and mount to right path (/app/feedback) 
+    -- this is an abnormal behaviour (use inspection) ** Always use native cmd/powershell -- NOT GIT BASH + WINDOWS
+    -- eg. 
+
+         docker run -d  -p 4000:80 --name fb2\
+        -v feedback:/app/feedback \
+        -v "C:\Users\KiranM\Downloads\data-volumes-03-adj-node-code\data-volumes-03-adj-node-			code":/app \
+        -v app/node_modules \      ==> this is WORK either the "/" given are not, in a NATIVE CMD
+        feedback

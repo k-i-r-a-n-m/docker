@@ -1,0 +1,43 @@
+ docker run -d --rm -p 4000:80 --name fb1 \
+ -v feedback:/app/feedback \
+ -v app/node_modules \
+ feedback
+
+
+
+ docker run -d --rm -p 4000:80 --name fb1 \
+ -v feedback:/app/feedback \
+ -v "C:\Users\KiranM\Downloads\data-volumes-03-adj-node-code\data-volumes-03-adj-node-	code\node_modules":/app/node_modules \
+ feedback
+
+
+
+anonymous-removal-check:
+----------------------------
+
+ docker run --rm  -d -p 6000:80 --name fb3 \
+ -v /app/feedback \
+ feedback
+
+docker run --rm  -d -p 6000:80 --name fb3  -v /app/feedback  feedback
+
+
+
+precedence-check-of-volumes;
+-----------------------------
+ docker run -d  -p 4000:80 --name fb2\
+ -v feedback:/app/feedback \
+ -v "C:\Users\KiranM\Downloads\data-volumes-03-adj-node-code\data-volumes-03-adj-node-			code":/app \
+ -v app/node_modules \
+ feedback sleep 3000
+
+
+
+docker run -d  -p 4000:80 --name fb4  -v feedback:/app/feedback  -v "C:\Users\KiranM\Downloads\data-volumes-03-adj-node-code\data-volumes-03-adj-node-			code":/app  -v /app/node_modules  feedback
+
+
+
+docker run -d  -p 4040:80 --name fb5  -v feedback:/app/feedback -v /app/node_modules -v "C:\Users\KiranM\Downloads\data-volumes-03-adj-node-code\data-volumes-03-adj-node-			code":/app    feedback
+
+
+docker run -d  -p 4050:80 --name fb6  -v feedback:/app/feedback -v app/node_modules -v "C:\Users\KiranM\Downloads\data-volumes-03-adj-node-code\data-volumes-03-adj-node-			code":/app    feedback

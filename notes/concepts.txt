@@ -44,10 +44,18 @@ DOCKER  Volumes - BIND MOUNT
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
 
     1. A file or directory on the host machine is mounted into a container
-    2. Using -v with Absolute path (-v 'abs_path:path_inside_container')
+
+    2. Using -v with Absolute path (-v 'abs_path:abs_path_inside_container') 
+        --> abs_path is importatnt for both host and container filesystem**
+    
     3. As a user we have the control over the host's filesystem which is being mounted.
+    
+    4. If an empty path (empty folder) is being mounted into the container's path with existing files. 
+        --> the files from the host mount path will replace the container's path (meaning it will be obscured(hidden) by the host's content)
+        **Note
+        --> This is not true for volumes. if volume is empty the contents of container will be copied to the volumes 
 
-
+    5. use-Case: provide 'live-data' to container (without needing to re-build and run)
 
 RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 DOCKER Volumes - Read-only
@@ -56,6 +64,32 @@ RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
     usage : <named_volume1:path_inside_container:ro> (read-only)
 
     -- You can simultaneously mount a single volume as read-write for some containers and as read-only for others
+
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+Docker Volume - multiple volume declaration (while running the container)
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+
+    1. The order doesn't matter's 
+    2. The deeper path get's mounted first
+    eg.
+        docker run -d  -p 4000:80 --name fb2\
+        -v feedback:/app/feedback \
+        -v "C:\Users\KiranM\Downloads\data-volumes-03-adj-node-code\data-volumes-03-adj-node-code":/app \
+        -v app/node_modules \
+        feedback
+
+    Explanation:    
+        -The anonymous volume app/node_modules gets mounted first, if the volume is empty the contents of the container at that path is copied to the volume
+        -The bind mount won't replaces the app/node_modules (due to the deeper path 1st mounted)
+
+
+VBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVB   
+DOCKER Volumes vs Bind mount with empty content mounting
+VBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVBVB
+
+    Volume     - if the volume is empty the pre-existing contents of the container (if any) at that path is copied to the volume  |  copied - ✔
+    Bind Mount - if the binding path is empty the pre-existing contents of the container is obsured(hidden)                       |  copied - ❌
+
 
 
 
